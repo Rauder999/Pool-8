@@ -1,35 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Impuls : MonoBehaviour
 {
-    Vector3 direction;
     public float acceleration;
     public Rigidbody rb;
+    public Transform cueParent;
 
+
+    void Update()
+    {
+        GiveImpuls();
+    }
 
     void GiveImpuls()
     {
-
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
-            direction = Camera.main.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, 0, Input.mousePosition.z));
-
-            rb.AddForce(direction * acceleration, ForceMode.Impulse);
+            rb.AddForce(cueParent.right * acceleration, ForceMode.Force);
         }
-    }
-    
-
-     
-    void Start()
-    {
-        
-    }
-
-     
-    void FixedUpdate()
-    {
-        GiveImpuls();
+        else if (cueParent != null)
+        {
+            Vector3 pivotVector = Input.mousePosition - Camera.main.WorldToScreenPoint(cueParent.position);
+            float angle = Mathf.Atan2(pivotVector.y, pivotVector.x) * Mathf.Rad2Deg;
+            cueParent.rotation = Quaternion.AngleAxis(-angle - 180, Vector3.up);
+        }
     }
 }

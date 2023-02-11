@@ -23,6 +23,7 @@ public class Impuls : MonoBehaviour
             Vector3 pivotVector = Input.mousePosition - Camera.main.WorldToScreenPoint(cueParent.position);
             float angle = Mathf.Atan2(pivotVector.y, pivotVector.x) * Mathf.Rad2Deg;
             cueParent.rotation = Quaternion.AngleAxis(-angle - 180, Vector3.up);
+
         }
     }
 }

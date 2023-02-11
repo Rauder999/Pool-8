@@ -10,6 +10,11 @@ public class KiyController : MonoBehaviour
         transform.position = _player.transform.position;
     }
 
+
+
+
+
+
     void Start()
     {
         ChangeKiyPosition();

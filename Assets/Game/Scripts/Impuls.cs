@@ -5,7 +5,7 @@ public class Impuls : MonoBehaviour
     public float acceleration;
     public Rigidbody rb;
     public Transform cueParent;
-
+    private float speed;
 
     void Update()
     {
@@ -14,7 +14,8 @@ public class Impuls : MonoBehaviour
 
     void GiveImpuls()
     {
-        if (Input.GetMouseButtonUp(0))
+        speed = GetComponent<Rigidbody>().velocity.magnitude;
+        if (Input.GetMouseButtonUp(0) && speed == 0)
         {
             rb.AddForce(cueParent.right * acceleration, ForceMode.Force);
         }

@@ -15,7 +15,7 @@ public class Impuls : MonoBehaviour
     void GiveImpuls()
     {
         speed = GetComponent<Rigidbody>().velocity.magnitude;
-        if (Input.GetMouseButtonUp(0) && speed == 0)
+        if (Input.GetMouseButtonUp(0) /*&& speed == 0*/)
         {
             rb.AddForce(cueParent.right * acceleration, ForceMode.Force);
         }

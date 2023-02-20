@@ -5,7 +5,7 @@ using UnityEngine;
 public class StopSpeed : MonoBehaviour
 {
 
-    float minSpeed = 0.5f;
+    public float minSpeed;
     private float speed;
     
   public void Stop()
